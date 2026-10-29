@@ -1,9 +1,27 @@
-@'
 # OpenHands sample application
 
-A small python project for testing OpenHands
+A small Python project for testing OpenHands.
 
-The greeting.py module contains a greet(name) function.
-Use Python standard-library unittest for tests
-'@ | Set-Content -LiteralPath '
-	(Join-Path $labSample "README.md") -Encoding UTF8
+## Usage
+
+The `greeting.py` module provides `greet(name, uppercase=False)`. Names are
+trimmed, and empty or whitespace-only names use `stranger`. Set `uppercase=True`
+to uppercase the entire greeting; existing calls keep their original behavior.
+
+```python
+from greeting import greet
+
+greet("Alice")                         # "hello, Alice!"
+greet("Alice", uppercase=False)        # "hello, Alice!"
+greet("Alice", uppercase=True)         # "HELLO, ALICE!"
+greet("  Alice  ", uppercase=True)     # "HELLO, ALICE!"
+greet(" ", uppercase=True)             # "HELLO, STRANGER!"
+```
+
+## Tests
+
+Run the tests with Python's standard-library unittest:
+
+```sh
+python -m unittest -v
+```

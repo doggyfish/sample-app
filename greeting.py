@@ -1,3 +1,4 @@
-def greet(name):
+def greet(name, uppercase=False):
     name = name.strip() or "stranger"
-    return f"hello, {name}!"
+    greeting = f"hello, {name}!"
+    return greeting.upper() if uppercase else greeting
